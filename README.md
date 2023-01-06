@@ -1,1 +1,1 @@
-# desktop-friends
+# Desktop Friends
