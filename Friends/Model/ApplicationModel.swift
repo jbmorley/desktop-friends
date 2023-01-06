@@ -57,12 +57,8 @@ class ApplicationModel: ObservableObject {
 extension ApplicationModel: EventTapDelegate {
 
     func eventTap(_ eventTap: EventTap, handleEvent event: NSEvent) -> Bool {
-        if event.type == .leftMouseDown {
-            guard let location = panel?.convertPoint(fromScreen: event.locationInWindow) else {
-                return false
-            }
+        if event.type == .leftMouseDown, let location = panel?.convertPoint(fromScreen: event.locationInWindow) {
             scene.add(location: location)
-            print(location)
         }
         return false
     }
