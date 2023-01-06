@@ -20,13 +20,6 @@ protocol EventTapDelegate: AnyObject {
 
 }
 
-extension CGEventMask {
-
-    static let allEvents = CGEventMask(bitPattern: ~0)
-
-}
-
-
 class EventTap {
 
     var eventTap: CFMachPort? = nil
