@@ -17,6 +17,7 @@ class ApplicationModel: ObservableObject {
         scene.size = NSScreen.main!.frame.size
         scene.scaleMode = .fill
         scene.backgroundColor = .clear
+        scene.setup()
         return scene
     }()
 
