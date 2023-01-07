@@ -16,6 +16,7 @@
 		D8BFE62D2968B9CE006A9A36 /* ApplicationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BFE62C2968B9CE006A9A36 /* ApplicationModel.swift */; };
 		D8BFE6302968BA3D006A9A36 /* CGEventMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BFE62F2968BA3D006A9A36 /* CGEventMask.swift */; };
 		D8BFE6332968BAB7006A9A36 /* DesktopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BFE6322968BAB7006A9A36 /* DesktopView.swift */; };
+		D8BFE637296968B2006A9A36 /* CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8BFE636296968B2006A9A36 /* CGRect.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		D8BFE62C2968B9CE006A9A36 /* ApplicationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationModel.swift; sourceTree = "<group>"; };
 		D8BFE62F2968BA3D006A9A36 /* CGEventMask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGEventMask.swift; sourceTree = "<group>"; };
 		D8BFE6322968BAB7006A9A36 /* DesktopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopView.swift; sourceTree = "<group>"; };
+		D8BFE636296968B2006A9A36 /* CGRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGRect.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				D8BFE62F2968BA3D006A9A36 /* CGEventMask.swift */,
+				D8BFE636296968B2006A9A36 /* CGRect.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -193,6 +196,7 @@
 				D8BFE6302968BA3D006A9A36 /* CGEventMask.swift in Sources */,
 				D8BFE6332968BAB7006A9A36 /* DesktopView.swift in Sources */,
 				D8BFE6292968AD53006A9A36 /* EventTap.swift in Sources */,
+				D8BFE637296968B2006A9A36 /* CGRect.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
