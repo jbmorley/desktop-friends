@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D84868E62969DA5F009FDF32 /* SpriteMap in Frameworks */ = {isa = PBXBuildFile; productRef = D84868E52969DA5F009FDF32 /* SpriteMap */; };
 		D86A8E90296893E000BBD834 /* FriendsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86A8E8F296893E000BBD834 /* FriendsApp.swift */; };
 		D86A8E92296893E000BBD834 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86A8E91296893E000BBD834 /* ContentView.swift */; };
 		D86A8E94296893E100BBD834 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D86A8E93296893E100BBD834 /* Assets.xcassets */; };
@@ -39,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D84868E62969DA5F009FDF32 /* SpriteMap in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,6 +137,9 @@
 			dependencies = (
 			);
 			name = Friends;
+			packageProductDependencies = (
+				D84868E52969DA5F009FDF32 /* SpriteMap */,
+			);
 			productName = Friends;
 			productReference = D86A8E8C296893E000BBD834 /* Friends.app */;
 			productType = "com.apple.product-type.application";
@@ -163,6 +168,9 @@
 				Base,
 			);
 			mainGroup = D86A8E83296893E000BBD834;
+			packageReferences = (
+				D84868E42969DA5F009FDF32 /* XCRemoteSwiftPackageReference "SpriteMap" */,
+			);
 			productRefGroup = D86A8E8D296893E000BBD834 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -392,6 +400,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D84868E42969DA5F009FDF32 /* XCRemoteSwiftPackageReference "SpriteMap" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Cosmo/SpriteMap.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D84868E52969DA5F009FDF32 /* SpriteMap */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D84868E42969DA5F009FDF32 /* XCRemoteSwiftPackageReference "SpriteMap" */;
+			productName = SpriteMap;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D86A8E84296893E000BBD834 /* Project object */;
 }
