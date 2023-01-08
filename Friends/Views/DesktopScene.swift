@@ -15,9 +15,8 @@ class SpriteSheet {
     let image: CGImage
     let size: CGSize
 
-    init?(size: CGSize) {
-        guard let image = NSImage(named: "Sheep"),
-              let cgImage = image.cgImage(forProposedRect: nil, context: nil, hints: nil)
+    init?(_ image: NSImage, size: CGSize) {
+        guard let cgImage = image.cgImage(forProposedRect: nil, context: nil, hints: nil)
         else {
             return nil
         }
@@ -34,21 +33,69 @@ class SpriteSheet {
 
 }
 
+class Animations {
+
+    let author: String
+    let title: String
+    let petname: String
+    let version: String
+    let info: String
+    let image: NSImage
+    let tilesX: Int
+    let tilesY: Int
+    let tileSize: CGSize
+    let frameCount: Int
+
+//    <tilesy>11</tilesy>
+
+    init?(url: URL) throws {
+        let animations = try XMLDocument(contentsOf: url)
+        guard let author = try animations.nodes(forXPath: "//header/author/text()").first?.stringValue,
+              let title = try animations.nodes(forXPath: "//header/title/text()").first?.stringValue,
+              let petname = try animations.nodes(forXPath: "//header/petname/text()").first?.stringValue,
+              let version = try animations.nodes(forXPath: "//header/version/text()").first?.stringValue,
+              let info = try animations.nodes(forXPath: "//header/info/text()").first?.stringValue,
+              let imageBase64 = try animations.nodes(forXPath: "//animations/image/png/text()").first?.stringValue,
+              let imageData = Data(base64Encoded: imageBase64),
+              let image = NSImage(data: imageData),
+              let cgImage = image.cgImage(forProposedRect: nil, context: nil, hints: nil),
+              let tilesXString = try animations.nodes(forXPath: "//animations/image/tilesx/text()").first?.stringValue,
+              let tilesX = Int(tilesXString),
+              let tilesYString = try animations.nodes(forXPath: "//animations/image/tilesy/text()").first?.stringValue,
+              let tilesY = Int(tilesYString)
+        else {
+            return nil
+        }
+        self.author = author
+        self.title = title
+        self.petname = petname
+        self.version = version
+        self.info = info
+        self.image = image
+        self.tilesX = tilesX
+        self.tilesY = tilesY
+        self.tileSize = CGSize(width: cgImage.width / tilesX, height: cgImage.height / tilesY)
+        self.frameCount = tilesX * tilesY
+    }
+
+}
+
 class CharacterNode: SKSpriteNode {
 
-    lazy var spriteSheet: SpriteSheet = {
-        return SpriteSheet(size: CGSize(width: 40, height: 40))!
-    }()
+    let animations: Animations
+    var spriteSheet: SpriteSheet? = nil
 
     init() {
-        super.init(texture: nil, color: .clear, size: CGSize(width: 40, height: 40))
 
-        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 40, height: 40))
-
+        let url = Bundle.main.url(forResource: "neko", withExtension: ".xml")!
+        self.animations = try! Animations(url: url)!
+        super.init(texture: nil, color: .clear, size: animations.tileSize)
+        spriteSheet = SpriteSheet(animations.image, size: animations.tileSize)
+        self.physicsBody = SKPhysicsBody(rectangleOf: animations.tileSize)
         self.position = CGPoint(x: 200, y: 200)
 
-        let textures = (0..<100).map { index in
-            return spriteSheet.textureAt(index: index)!
+        let textures = (0..<animations.frameCount).map { index in
+            return spriteSheet!.textureAt(index: index)!
         }
 
         let walkAnimation = SKAction.repeatForever(SKAction.animate(with: textures, timePerFrame: 0.3))
